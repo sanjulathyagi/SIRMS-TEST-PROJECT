@@ -7,7 +7,8 @@ $breadcrumb_item = "Appointments";
 $breadcrumb_item_active = "Manage";
 ?> 
 <div class="row">
-    <div class="col-12">        
+    <div class="col-12"> 
+    <a href="<?= SYS_URL ?>appointments/qr_scan.php" class="btn btn-dark mb-2"><i class="fas fa-user"></i> QR Scan</a>       
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Appointment Details</h3>
