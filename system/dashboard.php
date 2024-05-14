@@ -1,18 +1,18 @@
-<?php 
+<?php
 ob_start();
 include_once 'init.php';
-$link="Dashboard";
-$breadcrumb_item="Home";
-$breadcrumb_item_active="Dashboard";
-?>
-
+$link = "Dashboard";
+$breadcrumb_item = "Home";
+$breadcrumb_item_active = "Dashboard";
+?>     
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>150</h3>
+
+                <h3 id="NumberOfOrders"></h3>
 
                 <p>New Orders</p>
             </div>
@@ -95,7 +95,8 @@ $breadcrumb_item_active="Dashboard";
             <div class="card-body">
                 <div class="tab-content p-0">
                     <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                    <div class="chart tab-pane active" id="revenue-chart"
+                         style="position: relative; height: 300px;">
                         <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
                     </div>
                     <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
@@ -135,7 +136,7 @@ $breadcrumb_item_active="Dashboard";
                             <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="assets/dist/img/user1-128x128.jpg" alt="message user image">
+                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                             Is this template really for free? That's unbelievable!
@@ -151,7 +152,7 @@ $breadcrumb_item_active="Dashboard";
                             <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="assets/dist/img/user3-128x128.jpg" alt="message user image">
+                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                             You better believe it!
@@ -167,7 +168,7 @@ $breadcrumb_item_active="Dashboard";
                             <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="assets/dist/img/user1-128x128.jpg" alt="message user image">
+                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                             Working with AdminLTE on a great new app! Wanna join?
@@ -183,7 +184,7 @@ $breadcrumb_item_active="Dashboard";
                             <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="assets/dist/img/user3-128x128.jpg" alt="message user image">
+                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                             I would love to.
@@ -200,8 +201,7 @@ $breadcrumb_item_active="Dashboard";
                     <ul class="contacts-list">
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user1-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -216,8 +216,7 @@ $breadcrumb_item_active="Dashboard";
                         <!-- End Contact Item -->
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user7-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -232,8 +231,7 @@ $breadcrumb_item_active="Dashboard";
                         <!-- End Contact Item -->
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user3-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -248,8 +246,7 @@ $breadcrumb_item_active="Dashboard";
                         <!-- End Contact Item -->
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user5-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -264,8 +261,7 @@ $breadcrumb_item_active="Dashboard";
                         <!-- End Contact Item -->
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user6-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -280,8 +276,7 @@ $breadcrumb_item_active="Dashboard";
                         <!-- End Contact Item -->
                         <li>
                             <a href="#">
-                                <img class="contacts-list-img" src="assets/dist/img/user8-128x128.jpg"
-                                    alt="User Avatar">
+                                <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">
 
                                 <div class="contacts-list-info">
                                     <span class="contacts-list-name">
@@ -342,7 +337,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
                         <!-- checkbox -->
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo1" id="todoCheck1">
                             <label for="todoCheck1"></label>
                         </div>
@@ -361,7 +356,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
                             <label for="todoCheck2"></label>
                         </div>
@@ -377,7 +372,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo3" id="todoCheck3">
                             <label for="todoCheck3"></label>
                         </div>
@@ -393,7 +388,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo4" id="todoCheck4">
                             <label for="todoCheck4"></label>
                         </div>
@@ -409,7 +404,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo5" id="todoCheck5">
                             <label for="todoCheck5"></label>
                         </div>
@@ -425,7 +420,7 @@ $breadcrumb_item_active="Dashboard";
                             <i class="fas fa-ellipsis-v"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                        <div class="icheck-primary d-inline ml-2">
+                        <div  class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo6" id="todoCheck6">
                             <label for="todoCheck6"></label>
                         </div>
@@ -512,29 +507,28 @@ $breadcrumb_item_active="Dashboard";
                 </div>
             </div>
             <div class="card-body">
-                <canvas class="chart" id="line-chart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-transparent">
                 <div class="row">
                     <div class="col-4 text-center">
                         <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC">
+                               data-fgColor="#39CCCC">
 
                         <div class="text-white">Mail-Orders</div>
                     </div>
                     <!-- ./col -->
                     <div class="col-4 text-center">
                         <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC">
+                               data-fgColor="#39CCCC">
 
                         <div class="text-white">Online</div>
                     </div>
                     <!-- ./col -->
                     <div class="col-4 text-center">
                         <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC">
+                               data-fgColor="#39CCCC">
 
                         <div class="text-white">In-Store</div>
                     </div>
@@ -558,8 +552,7 @@ $breadcrumb_item_active="Dashboard";
                 <div class="card-tools">
                     <!-- button with a dropdown -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"
-                            data-offset="-52">
+                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                             <i class="fas fa-bars"></i>
                         </button>
                         <div class="dropdown-menu" role="menu">
@@ -590,8 +583,60 @@ $breadcrumb_item_active="Dashboard";
     <!-- right col -->
 </div>
 <!-- /.row (main row) -->
-
 <?php
-$content= ob_get_clean();
+$content = ob_get_clean();
 include 'layouts.php';
 ?>
+<script>
+    $(document).ready(function () {
+
+        getNumberOfOrders();
+
+        function getNumberOfOrders() {
+
+            $.ajax({
+                url: 'orders/getNumberOfOrders.php',
+                type: 'GET',
+                success: function (data) {
+                    $("#NumberOfOrders").html(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                }
+            });
+        }
+
+
+        //setInterval(getNumberOfOrders, 5000);
+
+        function playSound(url) {
+            var audio = new Audio(url);
+            audio.play();
+        }
+        function checkForNewOrder() {
+            $.ajax({
+                url: 'orders/check_for_new_order.php', // Path to PHP file that checks for new orders
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    
+                    if (response.new_order_flag) {
+                        // Play sound when a new order is detected
+                        playSound('assets/mixkit-access-allowed-tone-2869.wav');
+                    }
+                     $("#NumberOfOrders").html(response.nooforders);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', status, error);
+                }
+            });
+        }
+
+        setInterval(checkForNewOrder, 5000);
+
+    });
+
+</script>
+
+
+

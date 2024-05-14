@@ -104,86 +104,110 @@ include '../mail.php';
                         }
                     }
                     ?>
-                    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" role="form" class="php-email-form" novalidate>
+                    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" role="form"
+                        class="php-email-form" novalidate>
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="first_name">First Name</label>
-                                <input type="text" name="first_name" class="form-control border border-1 border-dark" id="first_name" value="<?= @$first_name ?>" placeholder="First Name" required>
+                                <input type="text" name="first_name" class="form-control border border-1 border-dark"
+                                    id="first_name" value="<?= @$first_name ?>" placeholder="First Name" required>
                                 <span class="text-danger"><?= @$message['first_name'] ?></span>
                             </div>
                             <div class="form-group col-md-6 mt-3 mt-md-0">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control border border-1 border-dark" name="last_name" id="last_name" placeholder="Last Name" required>
+                                <input type="text" class="form-control border border-1 border-dark" name="last_name"
+                                    id="last_name" placeholder="Last Name" required>
                                 <span class="text-danger"><?= @$message['first_name'] ?></span>
                             </div>
                         </div>
                         <div class="form-group mt-3">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="email" id="email" placeholder="Email" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="email" id="email"
+                                placeholder="Email" required>
                             <span class="text-danger"><?= @$message['email'] ?></span>
                         </div>
                         <div class="form-group mt-3">
                             <label for="address_line1">Address Line 1</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="address_line1" id="address_line1" placeholder="Address Line 1" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="address_line1"
+                                id="address_line1" placeholder="Address Line 1" required>
                         </div>
                         <div class="form-group mt-3">
                             <label for="address_line2">Address Line 2</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="address_line2" id="address_line2" placeholder="Address Line 2" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="address_line2"
+                                id="address_line2" placeholder="Address Line 2" required>
                         </div>
                         <div class="form-group mt-3">
                             <label for="address_line3">city</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="address_line3" id="address_line3" placeholder="Address Line 3" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="address_line3"
+                                id="address_line3" placeholder="Address Line 3" required>
                         </div>
                         <div class="form-group mt-3">
                             <label for="telno">Tel. No.(Home)</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="telno" id="telno" placeholder="Tel. No." required>
+                            <input type="text" class="form-control border border-1 border-dark" name="telno" id="telno"
+                                placeholder="Tel. No." required>
                         </div>
                         <div class="form-group mt-3">
                             <label for="telno">Mobile No.</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="mobile_no" id="mobile_no" placeholder="Mobile No" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="mobile_no"
+                                id="mobile_no" placeholder="Mobile No" required>
                         </div>
                         <div class="form-group mt-3">
                             <label>Select Gender</label>
                             <div class="form-check">
-                                <input class="form-check-input border border-1 border-dark" type="radio" name="gender" id="male"  value="male">
+                                <input class="form-check-input border border-1 border-dark" type="radio" name="gender"
+                                    id="male" value="male">
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input border border-1 border-dark" type="radio" name="gender" id="female" value="female" >
+                                <input class="form-check-input border border-1 border-dark" type="radio" name="gender"
+                                    id="female" value="female">
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>
                             </div>
                             <div class="text-danger mt-4"><?= @$message['gender'] ?></div>
-                        </div> 
+                        </div>
                         <div class="form-group mt-3">
-<?php
+                            <?php
 $db = dbConn();
 $sql = "SELECT * FROM  districts";
 $result = $db->query($sql);
 ?>
                             <label for="telno">District</label>
-                            <select name="district" id="district"  class="form-select form-select-lg mb-3 border border-1 border-dark" aria-label="Large select example">
-                                <option value="" >--</option>
-                            <?php
+                            <select name="district" id="district"
+                                class="form-select form-select-lg mb-3 border border-1 border-dark"
+                                onchange="loadDSArea()" aria-label="Large select example">
+                                <option value="">--</option>
+                                <?php
                             while ($row = $result->fetch_assoc()) {
                                 ?>
-                                    <option value="<?= $row['Id'] ?>"><?= $row['Name'] ?></option>
-                                    <?php
+                                <option value="<?= $row['Id'] ?>"><?= $row['Name'] ?></option>
+                                <?php
                                 }
                                 ?>
                             </select>
-                        </div>  
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="divisional">Divisional Secretariat</label>
+                            <div id="dsarea">
+                                <select name="divisional" id="divisional"
+                                    class="form-select form-select-lg mb-3 border border-1 border-dark">
+                                    <option value="">-- Select Divisional Secretariat --</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group mt-3">
                             <label for="user_name">User Name</label>
-                            <input type="text" class="form-control border border-1 border-dark" name="user_name" id="user_name" placeholder="Username" required>
+                            <input type="text" class="form-control border border-1 border-dark" name="user_name"
+                                id="user_name" placeholder="Username" required>
                             <span class="text-danger"><?= @$message['user_name'] ?></span>
                         </div>
                         <div class="form-group mt-3">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control border border-1 border-dark" name="password" id="password" placeholder="Password" required>
+                            <input type="password" class="form-control border border-1 border-dark" name="password"
+                                id="password" placeholder="Password" required>
                             <span class="text-danger"><?= @$message['password'] ?></span>
                         </div>
 
@@ -205,3 +229,30 @@ $result = $db->query($sql);
 <?php
 include 'footer.php';
 ?>
+<script>
+    $(document).ready(function () {
+        loadDSArea('<?= @$divisional ?>');
+    });
+
+
+    function loadDSArea(dsarea) {
+        var districtId = $('#district').val();
+
+        if (districtId) {
+
+            $.ajax({
+                url: 'get_divisional_secretariats.php?districtId=' + districtId +'&seldsarea='+dsarea,
+                type: 'GET',
+                success: function (data) {
+                    $("#dsarea").html(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                }
+            });
+        }
+
+
+    }
+
+</script>
