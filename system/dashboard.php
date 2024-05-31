@@ -623,8 +623,10 @@ include 'layouts.php';
                     if (response.new_order_flag) {
                         // Play sound when a new order is detected
                         playSound('assets/mixkit-access-allowed-tone-2869.wav');
+                    }else{
+                        $("#NumberOfOrders").html(response.nooforders);
                     }
-                     $("#NumberOfOrders").html(response.nooforders);
+                     
                 },
                 error: function (xhr, status, error) {
                     console.error('Error:', status, error);

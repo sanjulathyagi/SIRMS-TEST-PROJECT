@@ -48,7 +48,7 @@ FROM
                     <?= $row['unit_price'] ?>
                     <form method="post" action="shopping_cart.php">
                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                        <button type="submit" name="operate" value="add_cart">Add to Cart</button>                
+                        <button type="submit" name="operate"  value="add_cart">Add to Cart</button>                
                     </form>
                 </div>
                 <?php
