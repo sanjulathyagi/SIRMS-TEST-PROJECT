@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $DepartmentId = dataClean($DepartmentId);
     $AppDate = dataClean($AppDate);
     $UserName = dataClean($UserName);
-    
+
     $message = array();
     if (empty($FirstName)) {
         $message['FirstName'] = "The First Name should not be blank...!";
@@ -38,10 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message['Password'] = "The Password should not be blank...!";
     }
     if (!empty($UserName)) {
-        $db = dbConn();
-        $sql = "SELECT * FROM users WHERE UserName='$UserName'";
-        $result = $db->query($sql);
-        if ($result->num_rows > 0) {
+        $user = new User();
+        if ($user->checkUserName($UserName)) {
             $message['UserName'] = "This User Name already exsist...!";
         }
     }
@@ -58,19 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($message)) {
         //Use bcrypt hasing algorithem
         $pw = password_hash($Password, PASSWORD_DEFAULT);
-        $db = dbConn();
-        $sql = "INSERT INTO users(FirstName,LastName,UserName,Password,UserType,Status) VALUES ('$FirstName','$LastName','$UserName','$pw','employee','1')";
-        $db->query($sql);
-        $UserId = $db->insert_id;
-
-        $sql = "INSERT INTO employee(AppDate,DesignationId,DepartmentId,UserId) VALUES ('$AppDate','$DesignationId','$DepartmentId','$UserId')";
-        $db->query($sql);
+        $user=new User();
+        $UserId=$user->save($FirstName, $LastName, $UserName, $pw, 'employee');
+        $emp = new Employee();
+        $emp->save($AppDate, $DesignationId, $DepartmentId,$UserId);
 
         header("Location:manage.php");
     }
-
-
-    
 }
 ?>
 <div class="row">
@@ -97,31 +89,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="form-group">
                         <label for="DesignationId">Designation</label>
-                        <?php
-                        $db = dbConn();
-                        $sql = "SELECT * FROM designations";
-                        $result = $db->query($sql);
-                        ?>
+<?php
+$db = dbConn();
+$sql = "SELECT * FROM designations";
+$result = $db->query($sql);
+?>
                         <select class="form-control" id="DesignationId" name="DesignationId">
                             <option value="">--</option>
-                            <?php while ($row = $result->fetch_assoc()) { ?>
-                                <option value="<?= $row['Id'] ?>" <?= @$DesignationId==$row['Id']?'selected':'' ?>><?= $row['Designation'] ?></option>
-                            <?php } ?>
+                        <?php while ($row = $result->fetch_assoc()) { ?>
+                                <option value="<?= $row['Id'] ?>" <?= @$DesignationId == $row['Id'] ? 'selected' : '' ?>><?= $row['Designation'] ?></option>
+<?php } ?>
                         </select>
                         <span class="text-danger"><?= @$message['DesignationId'] ?></span>
                     </div>
                     <div class="form-group">
                         <label for="DepartmentId">Department</label>
-                        <?php
-                        $db = dbConn();
-                        $sql = "SELECT * FROM departments";
-                        $result = $db->query($sql);
-                        ?>
+<?php
+$db = dbConn();
+$sql = "SELECT * FROM departments";
+$result = $db->query($sql);
+?>
                         <select class="form-control" id="DepartmentId" name="DepartmentId">
                             <option value="">--</option>
-                            <?php while ($row = $result->fetch_assoc()) { ?>
-                                <option value="<?= $row['Id'] ?>" <?= @$DepartmentId==$row['Id']?'selected':'' ?>><?= $row['Department'] ?></option>
-                            <?php } ?>
+                        <?php while ($row = $result->fetch_assoc()) { ?>
+                                <option value="<?= $row['Id'] ?>" <?= @$DepartmentId == $row['Id'] ? 'selected' : '' ?>><?= $row['Department'] ?></option>
+<?php } ?>
                         </select>
                         <span class="text-danger"><?= @$message['DepartmentId'] ?></span>
                     </div>

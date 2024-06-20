@@ -18,9 +18,9 @@ include '../function.php';
             $time_duration = '01:00:00';
 
             $sql = "SELECT *
-FROM appointments
-WHERE DATE = '$date'
-AND ((start_time >= '$start_time' AND start_time < ADDTIME('$start_time', '$time_duration')) OR (end_time > '$start_time' AND end_time <= ADDTIME('$start_time', '$time_duration')) OR (start_time <= '$start_time' AND end_time >= ADDTIME('$start_time', '$time_duration')));";
+                    FROM appointments
+                    WHERE DATE = '$date'
+                    AND ((start_time >= '$start_time' AND start_time < ADDTIME('$start_time', '$time_duration')) OR (end_time > '$start_time' AND end_time <= ADDTIME('$start_time', '$time_duration')) OR (start_time <= '$start_time' AND end_time >= ADDTIME('$start_time', '$time_duration')));";
 
             $result = $db->query($sql);
 

@@ -4,7 +4,27 @@ include_once 'init.php';
 $link = "Dashboard";
 $breadcrumb_item = "Home";
 $breadcrumb_item_active = "Dashboard";
-?>     
+
+
+$db = dbConn();
+$sql = "SELECT leave_date FROM employee_leaves GROUP BY leave_date";
+$result = $db->query($sql);
+
+
+$customDates = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $customDates[] = $row['leave_date'];
+    }
+}
+?>   
+<style>
+    .highlight {
+        background-color: yellow;
+    }
+
+    /* Custom highlight style */
+</style>  
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-6">
@@ -638,7 +658,40 @@ include 'layouts.php';
 
     });
 
+
+    function setdate() {
+            var customDates = <?php echo json_encode($customDates); ?>;
+            // Convert each custom date to the same format as used in the data-day attributes
+            customDates = customDates.map(function (date) {
+                var dateParts = date.split('-');
+                return dateParts[1] + '/' + dateParts[2] + '/' + dateParts[0];
+            });
+
+            // Iterate through the calendar cells to find the matching dates
+            $('.table td[data-action="selectDay"]').each(function () {
+                var cellDate = $(this).data('day');
+                if (customDates.includes(cellDate)) {
+                    // Add a class to highlight the matching date
+                    $(this).addClass('highlight');
+                }
+            });
+
 </script>
 
+$(document).ready(function () {
+   $('.table').on('click', 'td[data-action="selectDay"]', function () {
+            var selectedDate = $(this).data('day'); // Get the value of the 'data-day' attribute
+            // Show an alert for debugging purposes
+            alert('Selected date: ' + selectedDate);
+           
+        });
+ });
 
+ $('.table').on('click', 'td[data-action="selectDay"]', function () {
+            var selectedDate = $(this).data('day'); // Get the value of the 'data-day' attribute
+            var newUrl = 'showleave.php?date=' + selectedDate;
+            // Redirect to the new page
+            window.location.href = newUrl;
+           
+        });
 

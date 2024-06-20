@@ -108,3 +108,30 @@ include '../layouts.php';
 ?>
 
 
+$(document).ready(function () {
+        function addItems() {
+            var tableBody = $('#items tbody');
+            var newRow = tableBody.find('.items-row').first().clone();
+
+            // Clear input values in the cloned row
+            newRow.find('input').val('');
+            newRow.find('.select2-container').remove();
+            newRow.find('select').removeClass('select2-hidden-accessible').removeAttr('data-select2-id tabindex aria-hidden');
+            newRow.find('select').select2();
+            // Append the cloned row to the table body
+            tableBody.append(newRow);
+        }
+        function removeItems(button) {
+            var row = $(button).closest('tr');
+            row.remove();
+        }
+        $('#addBtn').click(addItems);
+        $('#items').on('click', '.removeBtn', function () {
+            removeItems(this);
+        });
+
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+
+    });

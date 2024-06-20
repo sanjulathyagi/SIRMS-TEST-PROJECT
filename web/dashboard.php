@@ -89,7 +89,7 @@ if(!isset($_SESSION['USERID'])){
                       $time_duration = '01:00:00';
                       
                       $stime= strtotime($time);
-                      $endtime=date("H:i:s", strtotime("+60 minutes",$stime));
+                      $endtime=date("H:i:s", strtotime("+60 minutes",$stime));  //1 hour from start_time
                       
                       
                      $sql="INSERT INTO appointments(customer_id,date,start_time,end_time) VALUES('$userid','$date','$time','$endtime')";
